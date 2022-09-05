@@ -30,7 +30,6 @@ class Album extends React.Component {
     if (carregando) {
       return <Carregando />;
     }
-    const { props: { match: { params: { id } } } } = this;
     return (
 
       <div data-testid="page-album">
@@ -54,9 +53,11 @@ class Album extends React.Component {
             musica.map((music, index) => (
               index > 0 && (
                 <MusicCard
-                  key={ id }
+                  key={ index }
                   trackName={ music.trackName }
                   previewUrl={ music.previewUrl }
+                  trackId={ music.trackId }
+                  dados={ music }
                 />
               )
             ))

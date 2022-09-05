@@ -1,13 +1,11 @@
-import React from "react";
+import React from 'react';
 
-class Search extends React.Component{
-    render(){
-        return(
-            <div data-testid="page-search">
-
-            </div>
-        )
-    }
+class Search extends React.Component {
+  render() {
+    return (
+      <div data-testid="page-search" />
+    );
+  }
 }
 
 export default Search;

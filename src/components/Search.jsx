@@ -63,7 +63,9 @@ class Search extends React.Component {
           ) : (
             <div>
               <h4>
-                Resultado de álbuns de: {nomeartista}
+                Resultado de álbuns de:
+                {' '}
+                {nomeartista}
               </h4>
               {album.map((artista) => (
                 <div key={ artista.collectionId }>

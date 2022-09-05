@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
-import Carregando from './Carrengando';
+import Carregando from './Carregando';
 
 const Min = 3;
 class Login extends React.Component {

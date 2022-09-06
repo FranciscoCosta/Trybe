@@ -36,21 +36,21 @@ class Login extends React.Component {
     if (carrengado) return <Carregando />;
     if (!carrengado && submit) return <Redirect to="/search" />;
     return (
-      <div data-testid="page-login">
-        <form>
+      <div data-testid="page-login" className="container-login">
+        <form className="form-login">
           <label htmlFor="nome">
-            Nome:
-            <br />
+            Name:
             <input
               type="text"
               name="name"
               id="nome"
               data-testid="login-name-input"
+              className="input-login"
               onChange={ this.hadleInputChange }
               value={ name }
+              placeholder="Login"
             />
           </label>
-          <br />
           <button
             type="button"
             name="input-name"

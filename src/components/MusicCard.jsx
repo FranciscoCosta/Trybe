@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Carregando from './Carregando';
-import { addSong } from '../services/favoriteSongsAPI';
 
 class MusicCard extends React.Component {
   state = {
@@ -17,13 +16,13 @@ class MusicCard extends React.Component {
   handleCheked = async () => {
     const { dados } = this.props;
     this.setState({ carregado: false });
-    await addSong(dados.id);
+    await addSong(dados);
+
     this.setState({ carregado: true });
   };
 
   render() {
-    const { trackName, previewUrl, trackId } = this.props;
-    console.log(trackId);
+    const { trackName, previewUrl, trackId, verificado } = this.props;
     const { carregado, chekado } = this.state;
     return (
       <div>
@@ -44,7 +43,7 @@ class MusicCard extends React.Component {
                 id={ trackId }
                 type="checkbox"
                 data-testid={ `checkbox-music-${trackId}` }
-                checked={ chekado }
+                checked={ chekado || verificado }
                 onChange={ this.handleCheked }
                 onClick={ this.toggle }
               />

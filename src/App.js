@@ -7,6 +7,7 @@ import Favorites from './components/Favorites';
 import Profile from './components/Profile';
 import ProfileEdit from './components/ProfileEdit';
 import NotFound from './components/NotFound';
+import './App.css';
 
 // Francisco Costa
 
@@ -14,7 +15,6 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <p>TrybeTunes</p>
         <Route exact path="/" component={ Login } />
         <Route exact path="/search" component={ Search } />
         <Route exact path="/album/:id" component={ Album } />

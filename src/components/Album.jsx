@@ -4,15 +4,18 @@ import Header from './Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from './MusicCard';
 import Carregando from './Carregando';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Album extends React.Component {
   state = {
     musica: [],
     carregando: false,
+    favMusic: [],
   };
 
   componentDidMount() {
     this.pesquisa();
+    this.musicasFav();
   }
 
   pesquisa = async () => {
@@ -25,8 +28,21 @@ class Album extends React.Component {
     });
   };
 
+  musicasFav = async () => {
+    const favs = await getFavoriteSongs();
+    this.setState({
+      carregando: false, favMusic: favs,
+    });
+  };
+
+  verifica(idM) {
+    const { favMusic } = this.state;
+    const valor = favMusic.find((musica) => (musica.trackId === idM));
+    return valor;
+  }
+
   render() {
-    const { musica, carregando } = this.state;
+    const { musica, carregando, favMusic } = this.state;
     if (carregando) {
       return <Carregando />;
     }
@@ -58,6 +74,8 @@ class Album extends React.Component {
                   previewUrl={ music.previewUrl }
                   trackId={ music.trackId }
                   dados={ music }
+                  fav={ favMusic }
+                  verificado={ this.verifica(music.trackId) }
                 />
               )
             ))
